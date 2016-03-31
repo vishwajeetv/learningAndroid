@@ -28,22 +28,37 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Gets the data repository in write mode
+        databaseSeeder();
 
-//        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-//
-//        ContentValues values = new ContentValues();
-//        values.put(DatabaseContract.User.PRIMARY_KEY, 1);
-//        values.put(DatabaseContract.User.COLUMN_EMAIL, "vishwajeetvatharkar@gmail.com");
-//        values.put(DatabaseContract.User.COLUMN_NAME, "Vishwajeet");
-//        values.put(DatabaseContract.User.COLUMN_PASSWORD, "qwerty");
-//        Log.e("values",values.toString());
-//        long newRowId;
-//        newRowId = db.insert(
-//                DatabaseContract.User.TABLE_NAME,
-//                DatabaseContract.User.COLUMN_NAME,
-//                values);
 
+    }
+
+    private void databaseSeeder() {
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DatabaseContract.User.PRIMARY_KEY, 1);
+        values.put(DatabaseContract.User.COLUMN_EMAIL, "vishwajeetvatharkar@gmail.com");
+        values.put(DatabaseContract.User.COLUMN_NAME, "Vishwajeet");
+        values.put(DatabaseContract.User.COLUMN_PASSWORD, "qwerty");
+        Log.e("values", values.toString());
+
+        db.insert(
+                DatabaseContract.User.TABLE_NAME,
+                DatabaseContract.User.COLUMN_NAME,
+                values);
+
+        values = new ContentValues();
+        values.put(DatabaseContract.User.PRIMARY_KEY, 2);
+        values.put(DatabaseContract.User.COLUMN_EMAIL, "vish@gmail.com");
+        values.put(DatabaseContract.User.COLUMN_NAME, "The Lord");
+        values.put(DatabaseContract.User.COLUMN_PASSWORD, "qwerty");
+        Log.e("values", values.toString());
+
+        db.insert(
+                DatabaseContract.User.TABLE_NAME,
+                DatabaseContract.User.COLUMN_NAME,
+                values);
     }
 
 
